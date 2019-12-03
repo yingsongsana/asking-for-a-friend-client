@@ -13,6 +13,7 @@ const unauthenticatedOptions = (
 const alwaysOptions = (
   <Fragment>
     <Nav.Link to="/">Home</Nav.Link>
+    <Nav.Link to="#posts">Browse</Nav.Link>
   </Fragment>
 )
 
@@ -25,6 +26,7 @@ const Header = ({ user }) => (
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">
         { alwaysOptions }
+        { user && <Nav.Link href="#create-post">Post a question</Nav.Link> }
         { user && <span className="navbar-text mr-2">Welcome,
           <Dropdown
             alignRight
@@ -37,7 +39,7 @@ const Header = ({ user }) => (
               <Dropdown.Item href="#sign-out">Sign Out</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-        </span>}
+        </span> }
         { !user && unauthenticatedOptions }
       </Nav>
     </Navbar.Collapse>
