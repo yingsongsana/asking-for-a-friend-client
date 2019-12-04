@@ -8,7 +8,7 @@ const QuestionForm = ({ post, handleChange, handleSubmit, cancelPath }) => (
     <Form.Group controlId="questionForm.ControlInput1">
       <Form.Label>Question</Form.Label>
       <Form.Control
-        placeholder="What is the meaning of life?"
+        placeholder="Ex: What is the meaning of life?"
         name="question"
         value={post.question}
         onChange={handleChange}
@@ -16,8 +16,8 @@ const QuestionForm = ({ post, handleChange, handleSubmit, cancelPath }) => (
     </Form.Group>
     <Form.Group controlId="questionForm.ControlTextarea1">
       <Form.Label>Description</Form.Label>
-      <Form.Control as="textarea" rows="3"
-        placeholder="Question as old as time."
+      <Form.Control as="textarea" rows="5"
+        placeholder="Ex: Question as old as time."
         name="description"
         value={post.descripton}
         onChange={handleChange}
@@ -26,7 +26,7 @@ const QuestionForm = ({ post, handleChange, handleSubmit, cancelPath }) => (
     <Form.Group controlId="questionForm.ControlInput2">
       <Form.Label>Tag</Form.Label>
       <Form.Control
-        placeholder="#life #universe"
+        placeholder="Ex: #life #universe"
         name="tag"
         value={post.tag}
         onChange={handleChange}
@@ -34,7 +34,7 @@ const QuestionForm = ({ post, handleChange, handleSubmit, cancelPath }) => (
     </Form.Group>
     <Button type="submit">Submit</Button>
     <Link to={cancelPath}>
-      <button>Cancel</button>
+      <Button variant="secondary">Cancel</Button>
     </Link>
   </Form>
 )

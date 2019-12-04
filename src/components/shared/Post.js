@@ -45,8 +45,8 @@ const Post = props => {
     <Fragment>
       <h3>{post && post.question}</h3>
       <p>{post && post.description}</p>
-      {post && (userId === post.owner) && <Button onClick={handleDelete} variant={'danger'}>Delete</Button>}
       {post && (userId === post.owner) && <Link to={`/posts/${props.match.params.id}/edit-post`}><Button variant={'info'}>Update Post</Button></Link>}
+      {post && (userId === post.owner) && <Button onClick={handleDelete} variant={'danger'}>Delete</Button>}
     </Fragment>
   )
 }
