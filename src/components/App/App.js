@@ -4,14 +4,14 @@ import { Route } from 'react-router-dom'
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
 import Header from '../Header/Header'
-import Posts from '../shared/Posts'
-import Post from '../shared/Post'
+import Posts from '../posts/Posts'
+import Post from '../posts/Post'
 import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
-import CreatePost from '../shared/CreatePost'
-import UpdatePost from '../shared/UpdatePost'
+import CreatePost from '../posts/CreatePost'
+import UpdatePost from '../posts/UpdatePost'
 
 class App extends Component {
   constructor () {
