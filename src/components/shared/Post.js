@@ -10,7 +10,7 @@ const Post = props => {
   // console.log(userId)
 
   useEffect(() => {
-    axios(`${apiUrl}/books/${props.match.params.id}`)
+    axios(`${apiUrl}/posts/${props.match.params.id}`)
       .then(res => setPost(res.data.post))
       .then(() => props.alert({ heading: 'Success',
         message: 'Here\' a big question',
@@ -22,7 +22,7 @@ const Post = props => {
 
   const handleDelete = event => {
     axios({
-      url: `${apiUrl}//${props.match.params.id}`,
+      url: `${apiUrl}/posts/${props.match.params.id}`,
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${props.user.token}`
@@ -41,17 +41,12 @@ const Post = props => {
       })
   }
 
-  // Can use this `if` statement, orrrr return inside Fragment
-  // if (!book) {
-  //   return <p>Loading stuff...</p>
-  // }
-
   return (
     <Fragment>
       <h3>{post && post.question}</h3>
       <p>{post && post.description}</p>
-      {post && (userId === post.owner._id) && <Button onClick={handleDelete} variant={'danger'}>Delete</Button>}
-      {post && (userId === post.owner._id) && <Link to={`/posts/${props.match.params.id}/edit-post`}><Button variant={'info'}>Update Post</Button></Link>}
+      {post && (userId === post.owner) && <Button onClick={handleDelete} variant={'danger'}>Delete</Button>}
+      {post && (userId === post.owner) && <Link to={`/posts/${props.match.params.id}/edit-post`}><Button variant={'info'}>Update Post</Button></Link>}
     </Fragment>
   )
 }

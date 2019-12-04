@@ -7,8 +7,7 @@ import QuestionForm from './QuestionForm'
 const CreatePost = props => {
   const [post, setPost] = useState({ question: '',
     description: '',
-    tag: '',
-    comments: ''
+    tag: ''
   })
 
   const handleChange = event => {
@@ -30,10 +29,12 @@ const CreatePost = props => {
       },
       data: { post }
     })
-      .then(res => props.history.push(`/posts/${res.data.post._id}`))
-      .then(() => props.alert({ heading: 'Success',
-        message: 'You created a post!',
-        variant: 'success' }))
+      .then(res => {
+        props.alert({ heading: 'Success',
+          message: 'You created a post!',
+          variant: 'success' })
+        props.history.push(`/posts/${res.data.post._id}`)
+      })
       .catch(console.error)
   }
 

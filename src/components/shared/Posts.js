@@ -17,9 +17,9 @@ const Posts = props => {
 
   const postsJsx = posts.map(post => (
     // `_id` because we're using MongoDb here
-    <ListGroup.Item key={post._id} as={'a'} href={`#posts/${post._id}`}>
-      {post.question}
-      {post.description}
+    <ListGroup.Item action variant="light" key={post._id} as={'a'} href={`#posts/${post._id}`}>
+      <h3><ul>{post.question}</ul></h3>
+      <ul>{post.description}</ul>
     </ListGroup.Item>
   ))
 

@@ -9,6 +9,7 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import CreatePost from '../shared/CreatePost'
+import Posts from '../shared/Posts'
 import Post from '../shared/Post'
 
 class App extends Component {
@@ -59,11 +60,11 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/create-post' render={() => (
             <CreatePost alert={this.alert} user={user} />
           )} />
-          <Route path='/posts' render={() => (
-            <Post alert={this.alert} />
+          <Route exact path='/posts' render={() => (
+            <Posts alert={this.alert} user={user} />
           )} />
-          <Route path='/posts/:id' render={() => (
-            <Post alert={this.alert} />
+          <Route exact path='/posts/:id' render={() => (
+            <Post alert={this.alert} user={user} />
           )} />
         </main>
       </Fragment>
