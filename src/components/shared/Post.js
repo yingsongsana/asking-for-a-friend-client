@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button'
 
 const Post = props => {
   const [post, setPost] = useState(null)
-  const userId = props.owner
+  const userId = props.user ? props.user._id : null
   // console.log(userId)
 
   useEffect(() => {
