@@ -14,7 +14,7 @@ const CreatePost = props => {
     event.persist()
     setPost({ ...post, [event.target.name]: event.target.value })
   }
-
+  console.log(props)
   const handleSubmit = event => {
     event.preventDefault()
 

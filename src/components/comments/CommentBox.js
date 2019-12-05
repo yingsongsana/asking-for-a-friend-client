@@ -1,18 +1,15 @@
-import React, { useState } from 'react'
-import CommentList from './CommentList'
-import CommentForm from './CommentForm'
+import React from 'react'
+import Comments from './Comments'
+import CreateComment from './CreateComment'
+import './CommentBox.scss'
 
-const CommentBox = () => {
-  const [comment, setComment] = useState({ text: '' })
-
+const CommentBox = ({ user, comment, handleChange, handleSubmit }) => {
   return (
-    <div className="container">
+    <div className="comment-container">
       <div iv className="comments">
         <h2>Comments:</h2>
-        <CommentList data={comment} />
-      </div>
-      <div className="form">
-        <CommentForm />
+        <Comments />
+        { user && <CreateComment user={user} />}
       </div>
     </div>
   )

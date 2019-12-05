@@ -3,10 +3,12 @@ import { Link, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import Button from 'react-bootstrap/Button'
+import CommentBox from '../comments/CommentBox'
 
 const Post = props => {
   const [post, setPost] = useState(null)
-  const userId = props.user ? props.user._id : null
+  const user = props.user
+  const userId = user ? user._id : null
   // console.log(userId)
 
   useEffect(() => {
@@ -47,6 +49,7 @@ const Post = props => {
       <p>{post && post.description}</p>
       {post && (userId === post.owner) && <Link to={`/posts/${props.match.params.id}/edit-post`}><Button variant={'info'}>Update Post</Button></Link>}
       {post && (userId === post.owner) && <Button onClick={handleDelete} variant={'danger'}>Delete</Button>}
+      <CommentBox user={user} />
     </Fragment>
   )
 }
