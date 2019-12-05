@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 import CommentBox from '../comments/CommentBox'
 
 const Post = props => {
@@ -14,12 +15,11 @@ const Post = props => {
   useEffect(() => {
     axios(`${apiUrl}/posts/${props.match.params.id}`)
       .then(res => setPost(res.data.post))
-      .then(() => props.alert({ heading: 'Success',
-        message: 'Here\' a big question',
-        variant: 'success' }))
-      // Remember that users do need actual error messages not just for us
-      // in the console
-      .catch(console.error)
+      .catch(() => {
+        props.alert({ heading: 'Hmmm...',
+          message: 'Something went wrong.',
+          variant: 'danger' })
+      })
   }, [])
 
   const handleDelete = event => {
@@ -37,7 +37,7 @@ const Post = props => {
         props.history.push('/posts')
       })
       .catch(() => {
-        props.alert({ heading: 'ATTN',
+        props.alert({ heading: 'Hmmm...',
           message: 'Something went wrong',
           variant: 'danger' })
       })
@@ -45,12 +45,18 @@ const Post = props => {
 
   return (
     <Fragment>
-      <h3>{post && post.question}</h3>
-      <p>{post && post.description}</p>
-      {post && (userId === post.owner) && <Link to={`/posts/${props.match.params.id}/edit-post`}><Button variant={'info'}>Update Post</Button></Link>}
-      {post && (userId === post.owner) && <Button onClick={handleDelete} variant={'danger'}>Delete</Button>}
+      <Card style={{ width: '80vw', margin: '20px' }}>
+        <Card.Header as="h3">{post && post.question}</Card.Header>
+        <Card.Body>
+          <p>{post && post.description}</p>
+          {post && (userId === post.owner) && <Link to={`/posts/${props.match.params.id}/edit-post`}><Button variant={'info'}>Update Post</Button></Link>}
+          {post && (userId === post.owner) && <Button onClick={handleDelete} variant={'danger'}>Delete</Button>}
+          <footer className="blockquote-footer">{post && post.owner.username}</footer>
+        </Card.Body>
+      </Card>
       <CommentBox user={user} />
     </Fragment>
+
   )
 }
 

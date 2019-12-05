@@ -35,7 +35,11 @@ const CreatePost = props => {
           variant: 'success' })
         props.history.push(`/posts/${res.data.post._id}`)
       })
-      .catch(console.error)
+      .catch(() => {
+        props.alert({ heading: 'Errr...',
+          message: 'Something went wrong.',
+          variant: 'danger' })
+      })
   }
 
   return (

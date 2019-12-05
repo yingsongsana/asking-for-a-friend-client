@@ -6,8 +6,8 @@ import './CommentBox.scss'
 const CommentBox = ({ user, comment, handleChange, handleSubmit }) => {
   return (
     <div className="comment-container">
-      <div iv className="comments">
-        <h2>Comments:</h2>
+      <div className="comments">
+        <h4>Comments:</h4>
         <Comments />
         { user && <CreateComment user={user} />}
       </div>

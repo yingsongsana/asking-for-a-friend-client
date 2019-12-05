@@ -27,11 +27,15 @@ const CreateComment = props => {
       data: { comment }
     })
       .then(res => {
-        console.log(res.data)
-        console.log(props)
-        props.history.push(`/posts/${props.match.params.id}`)
+        // console.log(res.data)
+        // console.log(props)
+        props.history.push('/posts')
       })
-      .catch(console.error)
+      .catch(() => {
+        props.alert({ heading: 'Hmmm...',
+          message: 'Something went wrong',
+          variant: 'danger' })
+      })
   }
 
   return (

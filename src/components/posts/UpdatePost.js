@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { withRouter } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import QuestionForm from './QuestionForm'
@@ -8,11 +8,16 @@ const UpdatePost = props => {
   const [post, setPost] = useState({ question: '',
     description: '',
     tag: '' })
+  const [updated, setUpdated] = useState(false)
 
   useEffect(() => {
     axios(`${apiUrl}/posts/${props.match.params.id}`)
       .then(res => setPost(res.data.post))
-      .catch(console.error)
+      .catch(() => {
+        props.alert({ heading: 'Hmmm...',
+          message: 'Something went wrong',
+          variant: 'danger' })
+      })
   }, [])
 
   const handleChange = event => {
@@ -36,12 +41,21 @@ const UpdatePost = props => {
       data: { post }
     })
       .then(res => {
+        console.log(res.config.data)
         props.alert({ heading: 'Success',
           message: 'You updated your question.',
           variant: 'success' })
-        props.history.push(`/posts/${res.data.post._id}`)
+        setUpdated(true)
       })
-      .catch(console.error)
+      .catch(() => {
+        props.alert({ heading: 'Hmmm...',
+          message: 'Something went wrong',
+          variant: 'danger' })
+      })
+  }
+
+  if (updated) {
+    return <Redirect to={`/posts/${props.match.params.id}`} />
   }
 
   return (
