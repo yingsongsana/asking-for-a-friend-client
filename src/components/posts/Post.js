@@ -9,8 +9,8 @@ import CommentBox from '../comments/CommentBox'
 const Post = props => {
   const [post, setPost] = useState(null)
   const user = props.user
-  const userId = user ? user._id : null
-  // console.log(userId)
+  const userId = props.user ? props.user._id : null
+  console.log(userId)
 
   useEffect(() => {
     axios(`${apiUrl}/posts/${props.match.params.id}`)
@@ -22,6 +22,7 @@ const Post = props => {
       })
   }, [])
 
+  console.log(props)
   const handleDelete = event => {
     axios({
       url: `${apiUrl}/posts/${props.match.params.id}`,
@@ -42,15 +43,15 @@ const Post = props => {
           variant: 'danger' })
       })
   }
-
+  console.log(post)
   return (
     <Fragment>
       <Card style={{ width: '80vw', margin: '20px' }}>
         <Card.Header as="h3">{post && post.question}</Card.Header>
         <Card.Body>
           <p>{post && post.description}</p>
-          {post && (userId === post.owner) && <Link to={`/posts/${props.match.params.id}/edit-post`}><Button variant={'info'}>Update Post</Button></Link>}
-          {post && (userId === post.owner) && <Button onClick={handleDelete} variant={'danger'}>Delete</Button>}
+          {post && (userId === post.owner._id) && <Link to={`/posts/${props.match.params.id}/edit-post`}><Button variant={'info'}>Update Post</Button></Link>}
+          {post && (userId === post.owner._id) && <Button onClick={handleDelete} variant={'danger'}>Delete</Button>}
           <footer className="blockquote-footer">{post && post.owner.username}</footer>
         </Card.Body>
       </Card>
