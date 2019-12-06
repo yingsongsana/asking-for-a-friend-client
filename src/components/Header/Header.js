@@ -3,6 +3,10 @@ import Nav, { NavItem, NavLink } from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Dropdown from 'react-bootstrap/Dropdown'
 
+const dropDownStyle = {
+  color: '#696969'
+}
+
 const unauthenticatedOptions = (
   <Fragment>
     <Nav.Link href="#sign-up">Sign Up</Nav.Link>
@@ -35,8 +39,8 @@ const Header = ({ user }) => (
             as={NavItem}>
             <Dropdown.Toggle as={NavLink}>{user.username}</Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item href="#change-password">Change Password</Dropdown.Item>
-              <Dropdown.Item href="#sign-out">Sign Out</Dropdown.Item>
+              <Dropdown.Item style={ dropDownStyle} href="#change-password">Change Password</Dropdown.Item>
+              <Dropdown.Item style={ dropDownStyle} href="#sign-out">Sign Out</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </span> }
