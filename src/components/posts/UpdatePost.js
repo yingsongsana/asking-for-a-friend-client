@@ -41,7 +41,6 @@ const UpdatePost = props => {
       data: { post }
     })
       .then(res => {
-        console.log(res.config.data)
         props.alert({ heading: 'Success',
           message: 'You updated your question.',
           variant: 'success' })
