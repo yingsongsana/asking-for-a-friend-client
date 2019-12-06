@@ -1,6 +1,6 @@
-# Asking For A Friend:
+# Asking For A Friend
 
-#### SEI-05 Capstone Project
+#### SEI-05 Capstone Project (front-end)
 
 This is an application where registered users can post questions on life, relationships, etiquette, and everything in between. Other registered users can offer up advice. Unregistered users can browse all the questions, but are able to have any interaction on the site. This is a safe space where the community is encouraged to be mindful, compassionate, open-minded, and inclusive.
 
@@ -8,7 +8,7 @@ This is an application where registered users can post questions on life, relati
 
 1. Fork and clone this repository
 2. Run `npm install` for dependencies
-3. Run `npm run start` to see the client
+3. Run `npm start` to see the client
 
 ## Important Links
 
@@ -50,16 +50,6 @@ Back-end:
 * MongoDB
 * Mongoose
 
-### Catalogue of Routes
-| VERB | URL Pattern         |
-|------| :------------------:|
-|GET   | /posts              |
-|GET   | /posts/:id          |
-|GET   | /posts/:id/comments |
-|POST  | /posts              |
-|POST  | /posts/:id/comments |
-|PATCH | /posts/:id          |
-|DELETE| /posts/:id          |
 
 ### Unsolved Problems/Future Features
 
@@ -82,4 +72,7 @@ As for the biggest neglect for this submission: styling.
 ![Imgur](https://i.imgur.com/gzgLgWX.png)
 
 
-![Imgur](https://i.imgur.com/vEZkS6n.png)
+![Imgur](https://i.imgur.com/aQ0GGlk.png)
+
+### Wireframes & ERD
+![Imgur](https://i.imgur.com/jdxbqip.jpg?2)
