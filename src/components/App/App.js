@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom'
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
 import Header from '../Header/Header'
+import Home from '../Home/Home'
 import Posts from '../posts/Posts'
 import Post from '../posts/Post'
 // import CommentBox from '../comments/CommentBox'
@@ -47,6 +48,9 @@ class App extends Component {
           />
         ))}
         <main className="container">
+          <Route exact path='/' render={() => (
+            <Home alert={this.alert} user={user} />
+          )} />
           <Route exact path='/posts' render={() => (
             <Posts alert={this.alert} user={user} />
           )} />
