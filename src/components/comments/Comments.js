@@ -16,7 +16,7 @@ const Comments = props => {
       .catch()
   }, [])
 
-  console.log(comments)
+  // console.log(comments)
   const commentsJsx = comments.map(comment => (
     <ul key={comment._id}>
       <p className="text-muted" style={pStyle}>{comment.owner.username} ~ </p><p style={pStyle}>{comment.text}</p>

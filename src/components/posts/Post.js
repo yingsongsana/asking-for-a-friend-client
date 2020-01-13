@@ -10,7 +10,7 @@ const Post = props => {
   const [post, setPost] = useState(null)
   const user = props.user
   const userId = props.user ? props.user._id : null
-  console.log(userId)
+  // console.log(userId)
 
   useEffect(() => {
     axios(`${apiUrl}/posts/${props.match.params.id}`)
@@ -22,7 +22,7 @@ const Post = props => {
       })
   }, [])
 
-  console.log(props)
+  // console.log(props)
   const handleDelete = event => {
     axios({
       url: `${apiUrl}/posts/${props.match.params.id}`,
@@ -43,7 +43,7 @@ const Post = props => {
           variant: 'danger' })
       })
   }
-  console.log(post)
+  // console.log(post)
   return (
     <Fragment>
       <Card style={{ width: '80vw', margin: '20px' }}>
