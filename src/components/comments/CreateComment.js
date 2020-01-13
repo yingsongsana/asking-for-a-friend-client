@@ -1,11 +1,24 @@
-import React, { useState } from 'react'
-import { withRouter } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { withRouter, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import CommentForm from './CommentForm'
 
 const CreateComment = props => {
   const [comment, setComment] = useState({ text: '' })
+  const [created, setCreated] = useState(false)
+
+  useEffect(() => {
+    axios(`${apiUrl}/posts/${props.match.params.id}/comments`)
+      .then(res => {
+        setComment(res.data.post.comments)
+      })
+      .catch(() => {
+        props.alert({ heading: 'Hmmm...',
+          message: 'Something went wrong',
+          variant: 'danger' })
+      })
+  }, [])
 
   const handleChange = event => {
     event.persist()
@@ -26,16 +39,12 @@ const CreateComment = props => {
       },
       data: { comment }
     })
-      .then(res => {
-        // console.log(res.data)
-        // console.log(props)
-        props.history.push('/posts')
-      })
-      .catch(() => {
-        props.alert({ heading: 'Hmmm...',
-          message: 'Something went wrong',
-          variant: 'danger' })
-      })
+      .then(() => setCreated(true))
+      .catch(console.error)
+  }
+
+  if (created) {
+    return <Redirect to={`/posts/${props.match.params.id}`} />
   }
 
   return (

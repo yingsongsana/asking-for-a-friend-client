@@ -4,6 +4,8 @@ import apiUrl from '../../apiConfig'
 import ListGroup from 'react-bootstrap/ListGroup'
 
 const listGroupStyle = {
+  borderColor: '#17a2b8',
+  borderRadius: '5px',
   margin: '10px'
 }
 
@@ -29,7 +31,7 @@ const Posts = props => {
   ))
 
   return (
-    <div>
+    <div style={{ marginTop: '15px', marginBottom: '15px' }}>
       <ListGroup>{postsJsx}</ListGroup>
     </div>
   )

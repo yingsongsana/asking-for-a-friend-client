@@ -2,6 +2,7 @@ import React from 'react'
 import Card from 'react-bootstrap/Card'
 
 const homeStyle = {
+  borderColor: '#17a2b8',
   margin: '30px'
 }
 
