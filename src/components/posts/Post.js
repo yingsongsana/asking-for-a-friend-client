@@ -46,7 +46,7 @@ const Post = props => {
   // console.log(post)
   return (
     <Fragment>
-      <Card style={{ width: '80vw', margin: '20px' }}>
+      <Card border="info" style={{ width: '80vw', margin: '20px' }}>
         <Card.Header as="h3">{post && post.question}</Card.Header>
         <Card.Body>
           <p>{post && post.description}</p>
