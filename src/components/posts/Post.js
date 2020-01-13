@@ -50,8 +50,8 @@ const Post = props => {
         <Card.Header as="h3">{post && post.question}</Card.Header>
         <Card.Body>
           <p>{post && post.description}</p>
-          {post && (userId === post.owner._id) && <Link to={`/posts/${props.match.params.id}/edit-post`}><Button variant={'info'}>Update Post</Button></Link>}
-          {post && (userId === post.owner._id) && <Button onClick={handleDelete} variant={'danger'}>Delete</Button>}
+          {post && (userId === post.owner._id) && <Link to={`/posts/${props.match.params.id}/edit-post`}><Button variant={'outline-info'} size="sm" style={{ margin: '2px' }}>Update Post</Button></Link>}
+          {post && (userId === post.owner._id) && <Button onClick={handleDelete} variant={'outline-danger'} size="sm" style={{ margin: '2px' }}>Delete</Button>}
           <footer className="blockquote-footer">{post && post.owner.username}</footer>
         </Card.Body>
       </Card>
